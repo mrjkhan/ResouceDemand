@@ -9,6 +9,5 @@ IPython
 requests
 scipy
 datetime
-re
 requests
 get_dataframe
