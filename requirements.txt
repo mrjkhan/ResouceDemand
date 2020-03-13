@@ -10,4 +10,3 @@ requests
 scipy
 datetime
 requests
-get_dataframe
