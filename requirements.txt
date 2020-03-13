@@ -9,3 +9,5 @@ plotly
 numpy
 tabulate
 IPython
+requests
+scipy
