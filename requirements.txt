@@ -3,11 +3,13 @@ voila-material
 matplotlib
 pandas
 ipywidgets
-pyensae
-folium
-plotly
 numpy
 tabulate
 IPython
 requests
 scipy
+csv
+datetime
+re
+requests
+get_dataframe
