@@ -8,7 +8,6 @@ tabulate
 IPython
 requests
 scipy
-csv
 datetime
 re
 requests
