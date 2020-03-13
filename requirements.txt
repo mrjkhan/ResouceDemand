@@ -10,3 +10,5 @@ requests
 scipy
 datetime
 requests
+plotly
+tabulate
