@@ -146,12 +146,12 @@ def dataframe():
     dfMain = pd.concat([Italia_df, df], ignore_index=True)
     df_ProvState = dfMain.dropna(how='any')
     
-    #df_ProvState.to_csv('GlobalCOVID-DF3.txt', sep='\t')
+    df_ProvState.to_csv('COVID-CASES-DF.txt', sep='\t')
     
     return df_ProvState
 
     
     
-
+dataframe()
 
 
