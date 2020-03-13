@@ -22,19 +22,19 @@ def dataframe():
     
     df_confirmed = pd.read_csv(JH_DATA_URL + 'Confirmed.csv', index_col=False)
     ser = pd.Series(df_confirmed.index.tolist()).astype(str)
-    df_confirmed['Province/State'].fillna(ser + df_confirmed['Country/Region'],inplace=True)
+    df_confirmed['Province/State'].fillna(df_confirmed['Country/Region'] + '_' + ser,inplace=True)
     df_confirmed['type'] = 'Confirmed'
     
     
     df_deaths = pd.read_csv(JH_DATA_URL + 'Deaths.csv', index_col=False)
     ser = pd.Series(df_deaths.index.tolist()).astype(str)
-    df_deaths['Province/State'].fillna(ser + df_deaths['Country/Region'],inplace=True)
+    df_deaths['Province/State'].fillna(df_confirmed['Country/Region'] + '_' + ser,inplace=True)
     df_deaths['type'] = 'Deaths'
             
         
     df_recovered = pd.read_csv(JH_DATA_URL + 'Recovered.csv', index_col=False)
     ser = pd.Series(df_recovered.index.tolist()).astype(str)
-    df_recovered['Province/State'].fillna(ser + df_recovered['Country/Region'],inplace=True)
+    df_recovered['Province/State'].fillna(df_confirmed['Country/Region'] + '_' + ser,inplace=True)
     df_recovered['type'] = 'Recovered'        
            
         
