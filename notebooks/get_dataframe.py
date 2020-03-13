@@ -5,7 +5,7 @@ import pandas as pd
 import warnings
 warnings.filterwarnings('ignore')
 import re
-
+import sys
 
 
 def dataframe():
@@ -21,23 +21,26 @@ def dataframe():
     
     
     df_confirmed = pd.read_csv(JH_DATA_URL + 'Confirmed.csv', index_col=False)
+    df_confirmed = df_confirmed.replace(' ', '_', regex=True)
     ser = pd.Series(df_confirmed.index.tolist()).astype(str)
     df_confirmed['Province/State'].fillna(df_confirmed['Country/Region'] + '_' + ser,inplace=True)
     df_confirmed['type'] = 'Confirmed'
     
     
     df_deaths = pd.read_csv(JH_DATA_URL + 'Deaths.csv', index_col=False)
+    df_deaths = df_deaths.replace(' ', '_', regex=True)
     ser = pd.Series(df_deaths.index.tolist()).astype(str)
     df_deaths['Province/State'].fillna(df_confirmed['Country/Region'] + '_' + ser,inplace=True)
     df_deaths['type'] = 'Deaths'
             
         
     df_recovered = pd.read_csv(JH_DATA_URL + 'Recovered.csv', index_col=False)
+    df_recovered = df_recovered.replace(' ', '_', regex=True)
     ser = pd.Series(df_recovered.index.tolist()).astype(str)
     df_recovered['Province/State'].fillna(df_confirmed['Country/Region'] + '_' + ser,inplace=True)
     df_recovered['type'] = 'Recovered'        
-           
-        
+    
+    
     ProvState = df_confirmed['Province/State']
     CountryRegion = df_confirmed['Country/Region']
     
@@ -45,6 +48,8 @@ def dataframe():
     WorldCities = pd.read_csv(CITIES_URL, index_col=False)
     places = ProvState.tolist()
     
+    #print(places)
+    #sys.exit()
     
     popsizes = []
     for place in places:
