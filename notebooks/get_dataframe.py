@@ -21,28 +21,28 @@ def dataframe():
     
     
     df_confirmed = pd.read_csv(JH_DATA_URL + 'Confirmed.csv', index_col=False)
-    df_confirmed = df_confirmed.replace(' ', '_', regex=True)
+    #df_confirmed = df_confirmed.replace(' ', '_', regex=True)
     ser = pd.Series(df_confirmed.index.tolist()).astype(str)
     df_confirmed['Province/State'].fillna(df_confirmed['Country/Region'] + '_' + ser,inplace=True)
     df_confirmed['type'] = 'Confirmed'
     
     
     df_deaths = pd.read_csv(JH_DATA_URL + 'Deaths.csv', index_col=False)
-    df_deaths = df_deaths.replace(' ', '_', regex=True)
+    #df_deaths = df_deaths.replace(' ', '_', regex=True)
     ser = pd.Series(df_deaths.index.tolist()).astype(str)
     df_deaths['Province/State'].fillna(df_confirmed['Country/Region'] + '_' + ser,inplace=True)
     df_deaths['type'] = 'Deaths'
             
         
     df_recovered = pd.read_csv(JH_DATA_URL + 'Recovered.csv', index_col=False)
-    df_recovered = df_recovered.replace(' ', '_', regex=True)
+    #df_recovered = df_recovered.replace(' ', '_', regex=True)
     ser = pd.Series(df_recovered.index.tolist()).astype(str)
     df_recovered['Province/State'].fillna(df_confirmed['Country/Region'] + '_' + ser,inplace=True)
     df_recovered['type'] = 'Recovered'        
     
     
     ProvState = df_confirmed['Province/State']
-    CountryRegion = df_confirmed['Country/Region']
+    #CountryRegion = df_confirmed['Country/Region']
     
     
     WorldCities = pd.read_csv(CITIES_URL, index_col=False)
@@ -89,8 +89,12 @@ def dataframe():
     yi = list(df)
     dates = yi[6:]
     
-    
+    Italia_DATA_URL = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/531ff2459f941705d85c1c37b972bc66a6bbd5eb/dati-province/dpc-covid19-ita-province.csv'
     df_Italia = pd.read_csv(Italia_DATA_URL, sep='\,', error_bad_lines=False)
+    
+    #print(list(df_Italia))
+    #sys.exit()
+    
     dates = df_Italia['data'].tolist()
     
     
@@ -120,7 +124,7 @@ def dataframe():
     Italia_df['type'] = 'Confirmed'
     Italia_df['population size'] = 0
     
-    
+
     df_temp = df_Italia.filter(items=['denominazione_provincia', 'lat', 'long'])
     df_temp.drop_duplicates(inplace=True)
     
