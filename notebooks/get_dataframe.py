@@ -48,8 +48,6 @@ def dataframe():
     WorldCities = pd.read_csv(CITIES_URL, index_col=False)
     places = ProvState.tolist()
     
-    #print(places)
-    #sys.exit()
     
     popsizes = []
     for place in places:
@@ -154,6 +152,8 @@ def dataframe():
     
     dfMain = pd.concat([Italia_df, df], ignore_index=True)
     df_ProvState = dfMain.dropna(how='any')
+    
+    #print(list(df_ProvState))
     
     df_ProvState.to_csv('COVID-CASES-DF.txt', sep='\t')
     
