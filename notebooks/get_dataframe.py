@@ -87,7 +87,7 @@ def dataframe():
     yi = list(df)
     dates = yi[6:]
     
-    Italia_DATA_URL = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/531ff2459f941705d85c1c37b972bc66a6bbd5eb/dati-province/dpc-covid19-ita-province.csv'
+    #Italia_DATA_URL = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/531ff2459f941705d85c1c37b972bc66a6bbd5eb/dati-province/dpc-covid19-ita-province.csv'
     df_Italia = pd.read_csv(Italia_DATA_URL, sep='\,', error_bad_lines=False)
     
     #print(list(df_Italia))
