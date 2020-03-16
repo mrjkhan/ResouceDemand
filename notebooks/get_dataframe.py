@@ -84,6 +84,9 @@ def dataframe():
     yi = list(df)
     dates = yi[6:]
     
+    #print(dates)
+    #sys.exit()
+    
     #Italia_DATA_URL = 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/531ff2459f941705d85c1c37b972bc66a6bbd5eb/dati-province/dpc-covid19-ita-province.csv'
     df_Italia = pd.read_csv(Italia_DATA_URL, sep='\,', error_bad_lines=False)
     
@@ -148,13 +151,13 @@ def dataframe():
     
     
     dfMain = pd.concat([Italia_df, df], ignore_index=True)
-    df_ProvState = dfMain.dropna(how='any')
+    #df_ProvState = dfMain.dropna(how='any')
     
     #print(list(df_ProvState))
     
-    df_ProvState.to_csv('COVID-CASES-DF.txt', sep='\t')
+    dfMain.to_csv('COVID-CASES-DF.txt', sep='\t')
     
-    return df_ProvState
+    return dfMain
 
     
     
